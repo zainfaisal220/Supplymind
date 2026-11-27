@@ -1,0 +1,1 @@
+"""SUPPLYMIND Backend Application."""

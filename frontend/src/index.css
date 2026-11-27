@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(112, 99, 73, 0.45) 0%, transparent 70%),
+      linear-gradient(180deg, #3D3628 0%, #262219 50%, #15130E 100%);
+    background-attachment: fixed;
+    @apply text-[#F5F2EB] antialiased selection:bg-white selection:text-[#1C1913];
+    overflow-x: hidden;
+  }
+  #root {
+    min-height: 100vh;
+    isolation: isolate;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-[#2B261C]/75 backdrop-blur-md border border-[#EDE6D8]/15 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.45)];
+  }
+  .glass-input {
+    @apply bg-[#1E1A13]/85 border border-[#EDE6D8]/20 rounded-xl px-4 py-3 text-white placeholder-[#A89F8E] focus:outline-none focus:ring-2 focus:ring-white/40 transition-all;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white text-[#1C1913] font-semibold shadow-lg hover:bg-[#EDE6D8] transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 border border-white/15 text-[#F5F2EB] font-medium hover:bg-white/20 hover:text-white transition-all duration-200;
+  }
+  .metric-card {
+    @apply glass-panel p-5;
+  }
+  .section-header {
+    @apply flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Hide scrollbar for custom panels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.reduced-motion *, .reduced-motion ::before, .reduced-motion ::after {
+  animation-duration: 0.01s !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01s !important;
+  scroll-behavior: auto !important;
+}
